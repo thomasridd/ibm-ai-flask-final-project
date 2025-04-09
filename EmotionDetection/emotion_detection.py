@@ -9,6 +9,15 @@ def emotion_detector(text_to_analyse):
 
     if response.status_code == 200:
         return format_response(response.json())
+    elif response.status_code == 400:
+        return {
+            'anger': None,
+            'disgust': None,
+            'fear': None,
+            'joy': None,
+            'sadness': None,
+            'dominant_emotion': None
+        }
     else:
         return {
             'error': 'Failed to analyse emotion',

@@ -14,6 +14,8 @@ def home():
 def submit():
     text_to_analyse = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyse)
+    if response['dominant_emotion'] is None:
+        return 'Invalid text! Please try again!.'
     return process_response(response)
 
 def process_response(response):
